@@ -1,4 +1,4 @@
-package pageObject;
+package pageobject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -7,14 +7,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 public class OrderPage {
     public WebDriver driver;
     public OrderPage(WebDriver driver) {
         this.driver = driver;
     }
+
     //блок заказа
     private By orderForm = By.className("Order_Content__bmtHS");
 

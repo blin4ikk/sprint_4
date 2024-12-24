@@ -3,16 +3,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import pageObject.MainPage;
-
+import pageobject.MainPage;
 import java.time.Duration;
 
 
@@ -24,12 +16,12 @@ public class TestMainPage {
     private static final String PAGE_URL = "https://qa-scooter.praktikum-services.ru/";
     private static final String BROWSER_NAME_ENV_VARIABLE = "BROWSER_NAME";
 
-    private final String QUESTION;
-    private final String ANSWER;
+    private final String question;
+    private final String answer;
 
-    public TestMainPage(String QUESTION, String ANSWER) {
-        this.QUESTION = QUESTION;
-        this.ANSWER = ANSWER;
+    public TestMainPage(String question, String answer) {
+        this.question = question;
+        this.answer = answer;
     }
     @Parameterized.Parameters
     public static Object[][] getFAQ() {
@@ -58,11 +50,12 @@ public class TestMainPage {
 
        mainPage.scrollToAskAboutImportantBlock(); //скроллим до блока "Вопросы о важном"
        mainPage.visibilityAskAboutImportantBlock(); //ждем, пока блок "Вопросы о важном" отобразится
-       mainPage.comparisonQuestion(QUESTION, ANSWER); //проверяем ответ на вопрос
+       mainPage.comparisonQuestion(question, answer); //проверяем ответ на вопрос
     }
 
     @After
     public void teardown() {
+        // Закрой браузер
         driver.quit();
     }
 }
